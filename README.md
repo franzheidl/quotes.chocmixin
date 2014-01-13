@@ -2,7 +2,7 @@
 
 A mixin for [Chocolat](http://www.chocolatapp.com) to remove or toggle single and double quotes.
 
-![quotes.chocmixin Screenshot](http://github.com/franzheidl/quotes.chocmixin/raw/master/screenshots/quotes-menu.png)
+![quotes.chocmixin Screenshot](http://github.com/franzheidl/quotes.chocmixin/raw/master/screenshot/quotes-menu.png)
 
 
 * `ctrl-q` will remove single quotes
