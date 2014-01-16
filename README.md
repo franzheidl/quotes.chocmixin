@@ -13,6 +13,8 @@ A mixin for [Chocolat](http://www.chocolatapp.com) to remove or toggle single an
 
 * `cmd-ctrl-q` will toggle quotes: single quotes will be replaced by double quotes and vice versa.
 
+These actions will be run in the scope of a selection if one exists, otherwise affect the whole document.
+
 
 ###The MIT License (MIT)
 
