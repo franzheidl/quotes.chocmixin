@@ -9,7 +9,7 @@ A mixin for [Chocolat](http://www.chocolatapp.com) to remove or toggle single an
 
 * `alt-ctrl-q` will remove double quotes
 
-* `alt-cmd-ctrl` will remove all (both single and double) quotes
+* `alt-cmd-ctrl-q` will remove all (both single and double) quotes
 
 * `cmd-ctrl-q` will toggle quotes: single quotes will be replaced by double quotes and vice versa.
 
