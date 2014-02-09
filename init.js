@@ -1,16 +1,19 @@
 /*
 Quotes-Chocmixin.
-A Mixin for Chocolat to remove or toggle single and double quotes.
+A Mixin for Chocolat to convert, remove or toggle single and double quotes.
 https://github.com/franzheidl/quotes.chocmixin
 Franz Heidl 2014
 MIT License
 */
 
 
-function quotes(q) {
+function convertQuotes(q) {
   Recipe.run(function(recipe) {
+    var r, s, regex, result;
     
-    var r, s, regex, result, indices;
+    var setCharAt = function(str, i, chr) {
+      return str.substr(0, i) + chr + str.substr(i + 1);
+    };
     
     if (recipe.selection.length > 0) {
       r = recipe.selection;
@@ -22,12 +25,9 @@ function quotes(q) {
     s = recipe.textInRange(r);
     
     if (q === 'toggle') {
+      var indices = [];
+      regex = new RegExp(/'|"/g);
       
-      var setCharAt = function(str, i, chr) {
-        return str.substr(0, i) + chr + str.substr(i + 1);
-      };
-      
-      regex = /'|"/g, result, indices = [];
       while ((result = regex.exec(s))) {
         indices.push(result.index);
       }
@@ -47,37 +47,80 @@ function quotes(q) {
     }
     else {
       if (q === 'single') {
-        regex = new RegExp(/'/g);
+        regex = new RegExp(/"/g);
+        
+        if (s.search(regex) > -1) {
+          s = s.replace(regex, '\'');
+          recipe.replaceTextInRange(r, s);
+        }
+        
       }
       else if (q === 'double') {
-        regex = new RegExp(/"/g);
-      }
-      else if (q === 'all') {
-        regex = new RegExp(/'|"/g);
-      }
-      
-      if (s.search(regex) > -1) {
-        s = s.replace(regex, '');
-        recipe.replaceTextInRange(r, s);
+        regex = new RegExp(/'/g);
+        
+        if (s.search(regex) > -1) {
+          s = s.replace(regex, '"');
+          recipe.replaceTextInRange(r, s);
+        }
+        
       }
     }
     
   });
 }
 
+function removeQuotes(q) {
+  Recipe.run(function(recipe) {
+    var r, s, regex;
+    
+    if (recipe.selection.length > 0) {
+      r = recipe.selection;
+    }
+    else {
+      r = new Range(0, recipe.length);
+    }
+    
+    s = recipe.textInRange(r);
+    
+    if (q === 'single') {
+      regex = new RegExp(/'/g);
+    }
+    else if (q === 'double') {
+      regex = new RegExp(/"/g);
+    }
+    else if (q === 'all') {
+      regex = new RegExp(/'|"/g);
+    }
+    
+    if (s.search(regex) > -1) {
+      s = s.replace(regex, '');
+      recipe.replaceTextInRange(r, s);
+    }
+    
+  });
+}
 
-Hooks.addMenuItem('Text/Quotes/Remove Single Quotes', 'ctrl-q', function() {
-  quotes('single');
+
+Hooks.addMenuItem('Text/Quotes/Convert to Single Quotes', 'ctrl-q', function() {
+  convertQuotes('single');
 });
 
-Hooks.addMenuItem('Text/Quotes/Remove Double Quotes', 'alt-ctrl-q', function() {
-  quotes('double');
+Hooks.addMenuItem('Text/Quotes/Convert to Double Quotes', 'alt-ctrl-q', function() {
+  convertQuotes('double');
 });
 
-Hooks.addMenuItem('Text/Quotes/Remove All Quotes', 'alt-cmd-ctrl-q', function() {
-  quotes('all');
+Hooks.addMenuItem('Text/Quotes/Toggle Quotes', 'cmd-ctrl-q', function() {
+  convertQuotes('toggle');
 });
 
-Hooks.addMenuItem('Text/Quotes/Toggle Quotes  " <-> \' ', 'cmd-ctrl-q', function() {
-  quotes('toggle');
+Hooks.addMenuItem('Text/Quotes/Remove Single Quotes', '', function() {
+  removeQuotes('single');
+});
+
+Hooks.addMenuItem('Text/Quotes/Remove Double Quotes', '', function() {
+  removeQuotes('double');
+});
+
+Hooks.addMenuItem('Text/Quotes/Remove All Quotes', '', function() {
+  removeQuotes('all');
 });

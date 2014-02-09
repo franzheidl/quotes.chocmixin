@@ -1,7 +1,7 @@
 {
   "name": "Quotes",
-  "version": "1.0.1",
-  "description": "A Mixin for Chocolat to remove or toggle single and double quotes",
+  "version": "1.1.1",
+  "description": "A Mixin for Chocolat to convert, remove or toggle single and double quotes",
   "main": "init.js",
   "repository": {
     "type": "git",
@@ -11,8 +11,6 @@
   "quotes",
   "remove quotes",
   "toggle quotes",
-  "single quotes",
-  "double quotes",
   "convert quotes"
   ],
   "author": "Franz Heidl",

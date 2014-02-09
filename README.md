@@ -1,17 +1,25 @@
 # quotes.chocmixin
 
-A mixin for [Chocolat](http://www.chocolatapp.com) to remove or toggle single and double quotes.
+A mixin for [Chocolat](http://www.chocolatapp.com) to convert, remove or toggle single and double quotes.
 
-![quotes.chocmixin Screenshot](http://github.com/franzheidl/quotes.chocmixin/raw/master/screenshot/quotes-menu.png)
+![quotes.chocmixin Screenshot](http://github.com/franzheidl/quotes.chocmixin/raw/master/screenshot/quotes_menu.png)
 
 
-* `ctrl-q` will remove single quotes
+* `ctrl-q` will convert double quotes to single quotes
 
-* `alt-ctrl-q` will remove double quotes
+* `alt-ctrl-q` will convert single quotes double quotes
 
-* `alt-cmd-ctrl-q` will remove all (both single and double) quotes
+* `cmd-ctrl-q` will toggle quotes: 
 
-* `cmd-ctrl-q` will toggle quotes: single quotes will be replaced by double quotes and vice versa.
+      '<span class="some-class"></span>' 
+    
+  will become
+
+      "<span class='some-class'></span>"
+    
+  and vice versa.
+  
+There are additional menu items for removing either single, double, or all quotes.
 
 These actions will be run in the scope of a selection if one exists, otherwise affect the whole document.
 
