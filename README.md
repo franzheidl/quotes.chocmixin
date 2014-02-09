@@ -11,7 +11,7 @@ A mixin for [Chocolat](http://www.chocolatapp.com) to convert, remove or toggle 
 
 * `cmd-ctrl-q` will toggle quotes: 
 
-      \*'<span class="some-class"></span>'\*
+      '\*<span class="some-class"></span>\*'
     
   will become
 
