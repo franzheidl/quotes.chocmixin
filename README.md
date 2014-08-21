@@ -2,7 +2,7 @@
 
 A mixin for [Chocolat](http://www.chocolatapp.com) to convert, remove or toggle single and double quotes.
 
-![quotes.chocmixin Screenshot](http://github.com/franzheidl/quotes.chocmixin/raw/master/screenshot/quotes_menu.png)
+[![](screenshot/quotes_menu.png)[quotes.chocmixin screenshot]
 
 
 * `ctrl-q` will convert double quotes to single quotes
